@@ -29,10 +29,10 @@ export default function ProductList() {
             <h1 className="text-2xl font-bold mb-4">Product List</h1>
             <ul className="list-disc pl-5">
                 {data?.products?.map((product: { id: number; title: string, price: string }) => (
-                    <li key={product.id} className="mb-2">
-                        <Link to={`/products/${product.id}`} className="block">
-                            <div className="font-semibold">{product.title}</div>
-                            <div className="text-gray-600">${product.price}</div>
+                    <li key={product.id} className="mb-1">
+                        <Link to={`/products/${product.id}`} className="flex justify-between w-full">
+                            <span className="font-semibold">{product.title} - </span>
+                            <span className="text-gray-600">${product.price}</span>
                         </Link>
                     </li>
                 ))}

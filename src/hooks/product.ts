@@ -9,7 +9,7 @@ export const fetchProducts = async (page: number, pageSize: number) => {
 
     const skip = (page - 1) * pageSize;
 
-    const response = await fetch(`https://dummyjson.com/products?limit=${pageSize}&skip=${skip}`);
+    const response = await fetch(`https://dummyjson.com/productsx?limit=${pageSize}&skip=${skip}`);
 
     if (!response.ok) {
         throw new Error('Failed to fetch products');
