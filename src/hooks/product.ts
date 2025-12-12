@@ -19,10 +19,6 @@ export const fetchProducts = async (page: number, pageSize: number) => {
 };
 
 export const fetchProductById = async (id: number) => {
-
-    if (!id) {
-        throw new Error('Invalid product ID');
-    }
     
     await delay(1000);
 
@@ -33,4 +29,4 @@ export const fetchProductById = async (id: number) => {
     };
 
     return response.json();
-}
+};

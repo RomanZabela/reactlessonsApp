@@ -7,7 +7,7 @@ export const ProductDetail = () => {
     const { id } = useParams();
     const productId = Number(id);
 
-    if (!productId || isNaN(productId)) {
+    if (!id || isNaN(productId)) {
         return <ErrorMessage message="Invalid product ID." />;
     }
 
