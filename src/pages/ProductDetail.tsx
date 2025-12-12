@@ -1,13 +1,17 @@
 import { useParams } from "react-router-dom";
 import { fetchProductById } from "../hooks/product";
-import { ErrorMessage, Loading } from "../shared/modules";
+import { ErrorMessage, Loading } from "../shared/components";
 import { useQuery } from "@tanstack/react-query";
 
-export default function ProductDetail() {
-    const {id} = useParams();
+export const ProductDetail = () => {
+    const { id } = useParams();
     const productId = Number(id);
 
-    const {data, error, isLoading} = useQuery({
+    if (!productId || isNaN(productId)) {
+        return <ErrorMessage message="Invalid product ID." />;
+    }
+
+    const { data, error, isLoading } = useQuery({
         queryKey: ['product', productId],
         queryFn: () => fetchProductById(productId),
     });
@@ -30,7 +34,7 @@ export default function ProductDetail() {
                 className="mb-4 w-64 h-64 object-cover"
             />
 
-            <p className="text-grey-700">{data?.description}</p>
+            <p className="text-gray-700">{data?.description}</p>
 
             <div className="mt-4 text-xl font-semibold">
                 Price: ${data?.price}

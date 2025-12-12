@@ -1,10 +1,10 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import {fetchProducts} from "../hooks/product";
-import { ErrorMessage, Loading } from "../shared/modules";
+import { fetchProducts } from "../hooks/product";
+import { ErrorMessage, Loading } from "../shared/components";
 import { Link } from "react-router-dom";
 
-export default function ProductList() {
+export const ProductList = () => {
     const [page, setPage] = useState(1);
     const pageSize = 10;
 
@@ -28,7 +28,7 @@ export default function ProductList() {
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">Product List</h1>
             <ul className="list-disc pl-5">
-                {data?.products?.map((product: { id: number; title: string, price: string }) => (
+                {data?.products?.map((product: { id: number; title: string, price: number }) => (
                     <li key={product.id} className="mb-1">
                         <Link to={`/products/${product.id}`} className="flex justify-between w-full">
                             <span className="font-semibold">{product.title} - </span>
@@ -52,6 +52,7 @@ export default function ProductList() {
 
                 <button
                     onClick={() => setPage((old) => old + 1)}
+                    disabled={page >= totalPages}
                 >
                     Next
                 </button>
