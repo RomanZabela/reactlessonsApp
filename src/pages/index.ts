@@ -1,3 +1,5 @@
-export { default as Home } from './Home'
-export { default as About } from './About'
-export { default as NotFound } from './NotFound'
+export * from './Home'
+export * from './About'
+export * from './NotFound'
+export * from './ProductList'
+export * from './ProductDetail'

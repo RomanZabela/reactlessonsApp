@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function About() {
+export const About = () => {
     const [title, setTitle] = useState('About Page');
     return (
         <div>
@@ -15,5 +15,3 @@ function About() {
         </div>
     )
 }
-
-export default About;
