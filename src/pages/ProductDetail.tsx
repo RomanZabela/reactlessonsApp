@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { ErrorMessage, Loading } from "../shared/components";
-import { UseGetProductById } from "../hooks/pproduct";
+import { UseGetProductById } from "../hooks/product";
 
 export const ProductDetail = () => {
     const { id } = useParams();

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ErrorMessage, Loading } from "../shared/components";
 import { Link } from "react-router-dom";
 import type { Product } from "../shared/components/types/product";
-import { UseGetProductList } from "../hooks/pproduct";
+import { UseGetProductList } from "../hooks/product";
 
 export const ProductList = () => {
     const [page, setPage] = useState(1);
