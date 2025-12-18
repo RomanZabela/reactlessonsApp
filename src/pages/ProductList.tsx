@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ErrorMessage, Loading } from "../shared/components";
 import { Link } from "react-router-dom";
-import type { Product } from "../shared/components/types/product";
+import type { Product } from "../shared/types/product";
 import { UseGetProductList } from "../hooks/product";
+import { useToastStore } from "../shared/stores/useToastStore";
 
 export const ProductList = () => {
+    const { addToast } = useToastStore();
     const [page, setPage] = useState(1);
     const pageSize = 10;
 
@@ -17,6 +19,7 @@ export const ProductList = () => {
     }
 
     if (error) {
+        addToast("Failed to load products.", 'error', 3000);
         return <ErrorMessage message="Error loading products." />;
     }
 
