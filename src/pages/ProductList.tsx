@@ -1,19 +1,14 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { fetchProducts } from "../hooks/product";
 import { ErrorMessage, Loading } from "../shared/components";
 import { Link } from "react-router-dom";
 import type { Product } from "../shared/components/types/product";
+import { UseGetProductList } from "../hooks/pproduct";
 
 export const ProductList = () => {
     const [page, setPage] = useState(1);
     const pageSize = 10;
 
-    const { data, error, isLoading } = useQuery({
-        queryKey: ['products', page],
-        queryFn: () => fetchProducts(page, pageSize),
-        placeholderData: keepPreviousData,
-    });
+    const { data, error, isLoading } = UseGetProductList(page, pageSize);
 
     const totalPages = data ? Math.ceil(data.total / pageSize) : 0;
 

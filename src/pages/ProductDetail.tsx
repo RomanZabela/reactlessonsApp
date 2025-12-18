@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
-import { fetchProductById } from "../hooks/product";
 import { ErrorMessage, Loading } from "../shared/components";
-import { useQuery } from "@tanstack/react-query";
+import { UseGetProductById } from "../hooks/pproduct";
 
 export const ProductDetail = () => {
     const { id } = useParams();
@@ -11,10 +10,7 @@ export const ProductDetail = () => {
         return <ErrorMessage message="Invalid product ID." />;
     }
 
-    const { data, error, isLoading } = useQuery({
-        queryKey: ['product', productId],
-        queryFn: () => fetchProductById(productId),
-    });
+    const { data, error, isLoading } = UseGetProductById(productId);
 
     if (isLoading) {
         return <Loading />;
