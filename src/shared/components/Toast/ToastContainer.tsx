@@ -7,7 +7,7 @@ export const ToastContainer = () => {
 
     return (
         <div className="toast-container">
-            {toasts.map((toast) => (
+            {toasts.map((toast: Toast) => (
                 <Toast key={toast.id} toast={toast} onClose={() => removeToast(toast.id)} />
             ))}
         </div>
@@ -23,7 +23,7 @@ const Toast = ({toast, onClose}: ToastProps) => {
     return (
         <div className={`toast toast-${toast.type}`}>
             <div className="toast-message">{toast.message}</div>
-            <button className="toast-close-button" onClick={onClose}>×</button>
+            <button className="toast-close" onClick={onClose}>×</button>
         </div>
     );
 }

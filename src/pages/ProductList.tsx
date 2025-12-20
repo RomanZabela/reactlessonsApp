@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ErrorMessage, Loading } from "../shared/components";
 import { Link } from "react-router-dom";
 import type { Product } from "../shared/types/product";
@@ -14,12 +14,17 @@ export const ProductList = () => {
 
     const totalPages = data ? Math.ceil(data.total / pageSize) : 0;
 
+    useEffect(() => {
+        if (error) {
+            addToast("Failed to load products.", 'error', 3000);
+        }
+    }, [error, addToast]);
+
     if (!data && isLoading) {
         return <Loading />;
     }
 
     if (error) {
-        addToast("Failed to load products.", 'error', 3000);
         return <ErrorMessage message="Error loading products." />;
     }
 

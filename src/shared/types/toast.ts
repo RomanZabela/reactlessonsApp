@@ -6,4 +6,4 @@ export interface Toast {
     duration?: number; // in milliseconds
 }
 
-export type ToastTypes = 'success' | 'error' | 'info';
+export type ToastTypes = 'success' | 'error' | 'info' | 'warning';
