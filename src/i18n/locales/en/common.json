@@ -1,0 +1,28 @@
+{
+    "header": {
+        "menu": "Menu",
+        "home": "Home",
+        "about": "About",
+        "products": "Products"
+    },
+    "sidebar": {
+        "menu": "Menu",
+        "home": "Home",
+        "about": "About",
+        "products": "Products"
+    },
+    "buttons": {
+        "increment": "Increment",
+        "update": "Update Title",
+        "back": "Back to List"
+    },
+    "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {{page}} of {{totalPages}}"
+    },
+    "messages": {
+        "error": "Failed to load {{name}}.",
+        "success": "Count incremented to {{count}}."
+    }
+}

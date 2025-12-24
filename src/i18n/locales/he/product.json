@@ -1,0 +1,11 @@
+{
+    "product":{
+        "title": "רשימת מוצרים"
+    },
+    "details": {
+        "price": "מחיר",
+        "rating": "דירוג",
+        "errorInvalidId": "מזהה מוצר לא חוקי",
+        "errorLoading": "טעינת פרטי המוצר נכשלה."
+    }
+}

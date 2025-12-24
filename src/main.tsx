@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Home, About, NotFound, ProductDetail, ProductList } from './pages'
 import { createRoot } from 'react-dom/client'
+import './i18n/config.ts';
 
 const queryClient = new QueryClient()
 

@@ -1,0 +1,11 @@
+{
+    "product":{
+        "title": "Product List"
+    },
+    "details": {
+        "price": "Price",
+        "rating": "Rating",
+        "errorInvalidId": "Invalid Product ID",
+        "errorLoading": "Failed to load product details."
+    }
+}

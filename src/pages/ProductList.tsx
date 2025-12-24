@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import type { Product } from "../shared/types/product";
 import { useGetProductList } from "../hooks/product";
 import { useToastStore } from "../shared/stores/useToastStore";
+import { useTranslation } from "react-i18next";
 
 export const ProductList = () => {
     const { addToast } = useToastStore();
     const [page, setPage] = useState(1);
     const pageSize = 10;
+
+    const {t} = useTranslation(['product', 'common']);
 
     const { data, error, isLoading } = useGetProductList(page, pageSize);
 
@@ -16,21 +19,21 @@ export const ProductList = () => {
 
     useEffect(() => {
         if (error) {
-            addToast("Failed to load products.", 'error', 3000);
+            addToast(t('common:messages.error', { name: t('product:product.title') }), 'error', 3000);
         }
-    }, [error, addToast]);
+    }, [error, addToast, t]);
 
     if (!data && isLoading) {
         return <Loading />;
     }
 
     if (error) {
-        return <ErrorMessage message="Error loading products." />;
+        return <ErrorMessage message={t('common:messages.error', { name: t('product:product.title') })} />;
     }
 
     return(
         <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">Product List</h1>
+            <h1 className="text-2xl font-bold mb-4">{t('product:product.title')}</h1>
             <ul className="list-disc pl-5">
                 {data?.products?.map((product: Product) => (
                     <li key={product.id} className="mb-1">
@@ -46,23 +49,23 @@ export const ProductList = () => {
                 <button
                     onClick={() => setPage((p => p - 1))}
                     disabled={page === 1}
-                    aria-label="Previous Page"
+                    aria-label={t('common:pagination.previousPage')}
                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                 >
-                    Previous
+                    {t('common:pagination.previous')}
                 </button>
 
                 <span className="text-gray-700 font-medium">
-                    Page {page} / {totalPages}
+                    {t('common:pagination.page', { page: page, totalPages: totalPages })}
                 </span>
 
                 <button
                     onClick={() => setPage((old) => old + 1)}
                     disabled={page >= totalPages}
-                    aria-label="Next Page"
+                    aria-label={t('common:pagination.nextPage')}
                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                 >
-                    Next
+                    {t('common:pagination.next')}
                 </button>
             </div>
         </div>

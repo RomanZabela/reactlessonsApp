@@ -1,0 +1,31 @@
+{
+    "header": {
+        "menu": "תפריט",
+        "home": "בית",
+        "about": "אודות",
+        "products": "מוצרים"
+    },
+    "sidebar": {
+        "menu": "תפריט",
+        "home": "בית",
+        "about": "אודות",
+        "products": "מוצרים"
+    },
+    "buttons": {
+        "increment": "הוסף",
+        "update": "עדכן כותרת",
+        "back": "חזור לרשימה"
+    },
+    "titles": {
+        "homePageTitle": "דף הבית"
+    },
+    "pagination": {
+        "previous": "הקודם",
+        "next": "הבא",
+        "page": "עמוד {{page}} מתוך {{totalPages}}"
+    },
+    "messages": {
+        "error": "נכשל בטעינת {{name}}.",
+        "success": "הספירה עלתה ל-{{count}}."
+    }
+}

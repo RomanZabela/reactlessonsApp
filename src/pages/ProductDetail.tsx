@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
 import { ErrorMessage, Loading } from "../shared/components";
 import { useGetProductById } from "../hooks/product";
+import { useTranslation } from "react-i18next";
 
 export const ProductDetail = () => {
     const { id } = useParams();
     const productId = Number(id);
 
+    const {t} = useTranslation(['product', 'common']);
+
     if (!id || isNaN(productId)) {
-        return <ErrorMessage message="Invalid product ID." />;
+        return <ErrorMessage message={t('product:details.errorInvalidId')} />;
     }
 
     const { data, error, isLoading } = useGetProductById(productId);
@@ -17,7 +20,7 @@ export const ProductDetail = () => {
     }
 
     if (error) {
-        return <ErrorMessage message="Error loading product details." />;
+        return <ErrorMessage message={t('product:details.errorLoading')} />;
     }
 
     return (
@@ -33,18 +36,18 @@ export const ProductDetail = () => {
             <p className="text-gray-700">{data?.description}</p>
 
             <div className="mt-4 text-xl font-semibold">
-                Price: ${data?.price}
+                {t('product:details.price')}: ${data?.price}
             </div>
 
             <div className="mt-2 text-yellow-600 font-medium">
-                Rating: {data?.rating}
+                {t('product:details.rating')}: {data?.rating}
             </div>
 
             <button
                 onClick={() => window.history.back()}
                 className="mt-6 px-4 py-2 bg-gray-200 rounded"
             >
-                Back to List
+                {t('common:buttons.back')}
             </button>
         </div>
     )
