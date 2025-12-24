@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ErrorMessage, Loading } from "../shared/components";
 import { Link } from "react-router-dom";
 import type { Product } from "../shared/types/product";
-import { UseGetProductList } from "../hooks/product";
+import { useGetProductList } from "../hooks/product";
 import { useToastStore } from "../shared/stores/useToastStore";
 
 export const ProductList = () => {
@@ -10,7 +10,7 @@ export const ProductList = () => {
     const [page, setPage] = useState(1);
     const pageSize = 10;
 
-    const { data, error, isLoading } = UseGetProductList(page, pageSize);
+    const { data, error, isLoading } = useGetProductList(page, pageSize);
 
     const totalPages = data ? Math.ceil(data.total / pageSize) : 0;
 
@@ -46,7 +46,7 @@ export const ProductList = () => {
                 <button
                     onClick={() => setPage((p => p - 1))}
                     disabled={page === 1}
-                    araia-label="Previous Page"
+                    aria-label="Previous Page"
                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                 >
                     Previous

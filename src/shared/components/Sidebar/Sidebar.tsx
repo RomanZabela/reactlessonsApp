@@ -3,11 +3,12 @@ import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
-    const {isOpen, close} = useSidebarStore();
+    const {isOpen, toggle} = useSidebarStore();
     const navigate = useNavigate();
 
     const handleNavigation = (path: string) => {
         navigate(path);
+        toggle();
     }
 
     if (!isOpen) return null;
@@ -16,7 +17,7 @@ export const Sidebar = () => {
         <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
             <div className="sidebar-header">
                 <h2>Menu</h2>
-                <button className="close-btn" onClick={close}>✕</button>
+                <button className="close-btn" onClick={toggle}>✕</button>
             </div>
 
             <nav className="sidebar-nav">

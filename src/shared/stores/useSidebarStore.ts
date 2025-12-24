@@ -16,12 +16,6 @@ export const useSidebarStore = create<SidebarStore>((set) => {
                 localStorage.setItem('sidebarStore', JSON.stringify(true));
             }
         },
-        close: () => {
-            set({ isOpen: false });
-            if (typeof window !== 'undefined') {
-                localStorage.setItem('sidebarStore', JSON.stringify(false));
-            }
-        },
         toggle: () => {
             set((state) => {
                 const newState = !state.isOpen;

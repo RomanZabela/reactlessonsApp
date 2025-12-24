@@ -12,10 +12,10 @@ function App() {
     <div className='app-container'>
       <Sidebar />
       <ToastContainer />
-      <div className={`main-content ${isOpen ? 'with-sidebar' : ''}`}>
+      <div className={`main-content ${isOpen ? 'blurred' : ''}`}>
         <nav className='top-nav'>
           <button onClick={toggle} className='menu-toggle'>
-            {isOpen ? '✕ Close Menu' : '☰ Menu'}
+            ☰ Menu
           </button>
           <button onClick={() => navigate('/')}>Home</button>
           <button onClick={() => navigate('/about')}>About</button>
