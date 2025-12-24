@@ -4,6 +4,8 @@ Project was created for learning more about React + Vite
 
 Starting Advanced 1 from commit 85433b61452ccf54f5eeeb37bd8c396d960f6060. API used: <dummyjson> ([<base URL>](https://dummyjson.com/products)).
 
+Application use translation for two languages: English and Hebrew
+
 ## State Inventory
 
 | # | State | Side | Description  |
