@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { ErrorMessage, Loading } from "../shared/components";
-import { UseGetProductById } from "../hooks/product";
+import { useGetProductById } from "../hooks/product";
 
 export const ProductDetail = () => {
     const { id } = useParams();
@@ -10,7 +10,7 @@ export const ProductDetail = () => {
         return <ErrorMessage message="Invalid product ID." />;
     }
 
-    const { data, error, isLoading } = UseGetProductById(productId);
+    const { data, error, isLoading } = useGetProductById(productId);
 
     if (isLoading) {
         return <Loading />;

@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# Description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project was created for learning more about React + Vite
 
-Currently, two official plugins are available:
+## State Inventory
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| # | State | Side | Description  |
+| :--: | :---- | :---  | :---------  |
+| 1. | ProductList | Server side | Server store the data |
+| 2. | SelectedProduct | Server side | Server responsible for storing data |
+| 3. | Product Category | Server side | Server store the data and all dependencies |
+| 4. | PagedData | Client side | In current project client gets all data and slices by pages |
+| 5. | Sidebar | Client side | Navigation is for user, nothing to do with data |
+| 6. | Theme | Client side | Only visualisation, nothing to do with server data |
+| 7. | Search/Filter text | Client side | Search text is written by user and stored only in UI |
+| 8. | Toasted notifications | Client side | Just visualisation, nothing to do with data |
 
-## React Compiler
+## SideBar
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  Sidebar includes filter and navigation buttons
+  It opens menu in left side by pressing button on Navigation bar
 
-## Expanding the ESLint configuration
+  **isOpen** - describe the status of sidebar visible for user or not
+  **open()** - function which shows the menu and set *isOpen* to *true*
+  **close()** - function which close the menu and set *isOpen* to *false*
+  **toggle()** - function which allows other elements to toggle sidebar state, for example button on Nav menu
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Architecture
+  Sidebar should be on the top level of the App, it will provide access to sidebar from any elements in the App
+  The sidebar and backdrop components read the state
+  Header button triggers *toggle()*, close icon and backdrop trigger *close()* action
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Implementation
+  Button on the nav panel triggers *toggle()* action by click method.
+  Sidebar takes its fixed place in the left side of the page by reading *isOpen* value:
+    **true**: its read the css and showed the sidebar
+    **false**: hides the bar
+  
+### Using local storage
+  1. When app is loading, it triggers the loading hook, which looks into the localStorage:
+    * if key's value exists: loading the value
+    * if doesn't exist or corrupted: ignores and use default state
+  2. When the sidebar state is changes via *open()*, *close()* or *toggle()*, it syncs the state with localStorage.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Strategic decision
+  **Browser**. The hook must run inside the Sidebar context provider. It ensures that the component is initialized when the app starts. It prevents flickering and other non logic pops or closes.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  **SSD**. LocalStorage is browser-only feature, running on server it will cause the error. Solution for it: check access to localStorage, if not, load default value.
+
+## Toast notification
+  Zustand - it's ready to use library. I can use it with default css and animation. Ease to use.
+
+### Notification structure
+```ts
+  id: string; // Unique id
+  type: string; // type of notigication: success, warning, info or success
+  message: string; // text shown for user
+  timestamp: datetime; //when notification was created
+  timeout: number; // define how long current notification stays on the page
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Store actions
+  * Notifications: a list of all active notifications
+  * addToast: receivs message and time, creates the object and adds to the list
+  * removeToast: receivs an id to delete the notification from the list
+  * clearToasts: reset the list of notifications
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### ToastContainer component
+  Places on the top level of the App, ensures that notifications are visible even if users switch pages
+  Subscribe to the store's notification, the ToastContainer re-renders every time when new message added
+  It uses css for visualisation
+  It uses close button to calls the *removeNotification(id)* to close the current notification
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Notification system summary
+  Each toast is an object with unique id, type, message, timestamp and timeout duration.
+  All notifications store in notification array
+  Actions for notification: addNotification, removeNotification, clearAll
