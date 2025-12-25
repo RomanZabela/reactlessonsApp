@@ -14,7 +14,8 @@
     "buttons": {
         "increment": "Increment",
         "update": "Update Title",
-        "back": "Back to List"
+        "back": "Back to List",
+        "changeLanguage": "Change Language"
     },
     "pagination": {
         "previous": "Previous",

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 export const ThemeSwitch = () => {
     const {theme, setTheme} = useThemeStore();
 
-    const [t] = useTranslation('common');
+    const {t} = useTranslation('common');
 
     useEffect(() => {
         const linkElement = document.getElementById('theme-link') as HTMLLinkElement;
@@ -27,7 +27,7 @@ export const ThemeSwitch = () => {
         text
         severity="secondary"
         onClick={toggleTheme}
-        aria-label="Toggle Theme"
+        aria-label={t('buttons.changeLanguage')}
         />
     );
 }

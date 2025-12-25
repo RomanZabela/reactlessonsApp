@@ -17,7 +17,7 @@ export const About = () => {
                 value={title} 
                 onChange={(e) => setTitle(e.target.value)} 
             />
-            <button onClick={() => setTitle(t('about:newTitle'))}>{t('common:buttons:update')}</button>
+            <button onClick={() => setTitle(t('about:newTitle'))}>{t('common:buttons.update')}</button>
         </div>
     )
 }

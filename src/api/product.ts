@@ -1,5 +1,4 @@
 
-
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const fetchProducts = async (page: number, pageSize: number, sortField: string, sortOrder: string) => {

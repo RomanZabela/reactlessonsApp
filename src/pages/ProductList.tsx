@@ -7,7 +7,7 @@ import { useToastStore } from "../shared/stores/useToastStore";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "primereact/button";
-import { DataTable, type SortOrder } from "primereact/datatable";
+import { DataTable, type DataTablePageEvent, type DataTableSortEvent, type SortOrder } from "primereact/datatable";
 import { Column } from "primereact/column";
 
 import "./ProductList.css";
@@ -17,15 +17,15 @@ export const ProductList = () => {
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
     const [rows, setRows] = useState(10);
-    const [expandedRows, setExpandedRows] = useState<any>(null);
-    const [sortFiled, setSortField] = useState<string>('');
+    const [expandedRows, setExpandedRows] = useState<Record<number, boolean> | null>(null);
+    const [sortField, setSortField] = useState<string>('');
     const [sortOrder, setSortOrder] = useState<SortOrder>(0);
 
     const {t} = useTranslation(['product', 'common']);
 
     const sortDirection = sortOrder === 1 ? 'asc' : sortOrder === -1 ? 'desc' : undefined;
 
-    const { data, error, isLoading } = useGetProductList(page, rows, sortFiled, sortDirection || '');
+    const { data, error, isLoading } = useGetProductList(page, rows, sortField, sortDirection || '');
 
     useEffect(() => {
         if (error) {
@@ -48,7 +48,6 @@ export const ProductList = () => {
                 icon={isExpanded ? 'pi pi-eye-slash' : 'pi pi-eye'}
                 rounded
                 text
-                severity="info"
                 onClick={(e) => {
                     e.stopPropagation();
                     if (isExpanded) {
@@ -71,13 +70,13 @@ export const ProductList = () => {
         );
     };
 
-    const onPageChange = (event: any) => {
-        setPage(event.page + 1);
+    const onPageChange = (event: DataTablePageEvent) => {
+        setPage(event.page! + 1);
         setRows(event.rows);
         setExpandedRows(null);
-    }
+    };
 
-    const onSort = (event: any) => {
+    const onSort = (event: DataTableSortEvent) => {
         setSortField(event.sortField as string);
         setSortOrder(event.sortOrder as SortOrder);
         setExpandedRows(null);
@@ -104,13 +103,13 @@ export const ProductList = () => {
                 first={(page - 1) * rows}
                 onPage={onPageChange}
                 onSort={onSort}
-                sortField={sortFiled}
+                sortField={sortField}
                 sortOrder={sortOrder}
                 tableStyle={{minWidth: '50rem'}}
                 onRowClick={(e) => navigate(`/products/${e.data.id}`)}
                 className="dataTable"
                 loading={isLoading}
-                expandedRows={expandedRows}
+                expandedRows={expandedRows!}
                 onRowToggle={(e) => setExpandedRows(e.data)}
                 rowExpansionTemplate={rowExpansionTemplate}
                 dataKey="id"

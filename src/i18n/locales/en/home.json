@@ -1,5 +1,5 @@
 {
     "title": "Home Page",
     "count": "Count: {{count}}",
-    "button": " Increase Count"
+    "button": "Increase Count"
 }

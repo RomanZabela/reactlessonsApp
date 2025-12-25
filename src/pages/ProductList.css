@@ -12,6 +12,11 @@
     cursor: pointer;
 }
 
+.dataTable .p-button-text {
+    color: var(--text-color);
+    background-color: transparent;
+}
+
 .productImage {
     width: 5rem;
     height: 5rem;

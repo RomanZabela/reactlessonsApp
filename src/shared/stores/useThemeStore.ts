@@ -8,8 +8,9 @@ interface ThemeState {
 }
 
 export const useThemeStore = create<ThemeState>((set) => ({
-    theme: (localStorage.getItem('theme') as Theme) || 'lara-light-blue',
+    theme: (typeof window === 'undefined' ? 'lara-light-blue' : (localStorage.getItem('theme') as Theme)) || 'lara-light-blue',
     setTheme: (theme: Theme) => {
+        if (typeof window === 'undefined') return;
         localStorage.setItem('theme', theme);
         set({ theme });
     },
