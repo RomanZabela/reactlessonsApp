@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useToastStore } from "../shared/stores/useToastStore";
 import { useTranslation } from "react-i18next";
+import { Card } from "primereact/card";
+import { Button } from "primereact/button";
 
 export const Home = () => {
     const [count, setCount] = useState(0);
@@ -14,10 +16,18 @@ export const Home = () => {
     };
 
     return (
-        <div>
-            <h1>{t('home:title')}</h1>
-            <p>{t('home:count', { count })}</p>
-            <button onClick={handleIncrement}>{t('common:buttons.increment')}</button>
+        <div style={{ padding: '2rem' }}>
+            <Card title={t('home:title')}>
+            <p style={{ fontSize: '1.2rem', marginBottom: '1rem' }}>
+                {t('home:count', { count })}
+            </p>
+            <Button 
+                label={t('home:button')} 
+                icon="pi pi-plus" 
+                onClick={handleIncrement}
+                severity="success"                   
+            />
+            </Card>
         </div>
     );
 }

@@ -24,5 +24,9 @@
     "messages": {
         "error": "Failed to load {{name}}.",
         "success": "Count incremented to {{count}}."
+    },
+    "themeSwitch": {
+        "toLight": "Switch to Light Theme",
+        "toDark": "Switch to Dark Theme"
     }
 }

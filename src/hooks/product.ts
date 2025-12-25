@@ -6,8 +6,8 @@ export const useGetProductById = (productId: number) =>useQuery({
         queryFn: () => fetchProductById(productId),
     });
 
-export const useGetProductList = (page: number, pageSize: number) => useQuery({
-        queryKey: ['products', page, pageSize],
-        queryFn: () => fetchProducts(page, pageSize),
+export const useGetProductList = (page: number, pageSize: number, sortField: string, sortOrder: string) => useQuery({
+        queryKey: ['products', page, pageSize, sortField, sortOrder],
+        queryFn: () => fetchProducts(page, pageSize, sortField, sortOrder),
         placeholderData: keepPreviousData,
     });

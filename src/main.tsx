@@ -7,6 +7,12 @@ import { Home, About, NotFound, ProductDetail, ProductList } from './pages'
 import { createRoot } from 'react-dom/client'
 import './i18n/config.ts';
 
+const savedTheme = localStorage.getItem('theme') || 'lara-light-blue';
+const linkElement = document.getElementById('theme-link') as HTMLLinkElement;
+if (linkElement) {
+  linkElement.href = `https://unpkg.com/primereact/resources/themes/${savedTheme}/theme.css`;
+}
+
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter(
