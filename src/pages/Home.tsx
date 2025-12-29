@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 
+import "./Home.css";
+
 export const Home = () => {
     const [count, setCount] = useState(0);
     const { addToast } = useToastStore();
@@ -16,9 +18,9 @@ export const Home = () => {
     };
 
     return (
-        <div style={{ padding: '2rem' }}>
+        <div className="home-container">
             <Card title={t('home:title')}>
-            <p style={{ fontSize: '1.2rem', marginBottom: '1rem' }}>
+            <p className="count-info">
                 {t('home:count', { count })}
             </p>
             <Button 

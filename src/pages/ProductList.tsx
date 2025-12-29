@@ -43,19 +43,22 @@ export const ProductList = () => {
 
     const actionBodyTemplate = (rowData: Product) => {
         const isExpanded = expandedRows && expandedRows[rowData.id];
+
+        const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+            e.stopPropagation();
+            if (isExpanded) {
+                setExpandedRows(null);
+            } else {
+                setExpandedRows({ [rowData.id]: true });
+            }
+        };
+
         return (
             <Button 
                 icon={isExpanded ? 'pi pi-eye-slash' : 'pi pi-eye'}
                 rounded
                 text
-                onClick={(e) => {
-                    e.stopPropagation();
-                    if (isExpanded) {
-                        setExpandedRows(null);
-                    } else {
-                        setExpandedRows({ [rowData.id]: true });
-                    }
-                }}
+                    onClick={handleButtonClick}
                 aria-label={t('product:button.viewDetails', { title: rowData.title })}
             />
         );

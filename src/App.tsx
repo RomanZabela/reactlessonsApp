@@ -1,4 +1,3 @@
-import './App.css'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { Sidebar } from './shared/components/Sidebar/Sidebar'
 import { useSidebarStore } from './shared/stores/useSidebarStore';
@@ -8,6 +7,7 @@ import { useLangDirection } from './hooks/useLangDirection';
 import { ThemeSwitch } from './shared/components/ThemeSwitch/ThemeSwitch';
 import { useThemeStore } from './shared/stores/useThemeStore';
 import { Button } from 'primereact/button';
+import './App.css'
 
 function App() {
   const {isOpen, toggle} = useSidebarStore();

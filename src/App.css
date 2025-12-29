@@ -8,23 +8,12 @@
   overflow-x: hidden;
 }
 
-.app-container[dir="ltr"] .p-button .p-button-icon-left {
-  margin-right: 0.5rem;
-}
-
-.app-container[dir="rtl"] .p-button .p-button-icon-left {
+html[dir="rtl"] .app-container .top-nav .nav-button .p-button-icon {
   margin-left: 0.5rem;
-  margin-right: 0;
 }
 
-.app-container[dir="ltr"] .p-button .p-button-icon-right {
-  margin-left: 0.5rem;
-  margin-right: 0;
-}
-
-.app-container[dir="rtl"] .p-button .p-button-icon-right {
-  margin-right: 0.5rem;
-  margin-left: 0;
+html[dir="ltr"] .app-container .top-nav .nav-button .p-button-icon {
+  margin-left: inherit;
 }
 
 .app-container.light-theme {
