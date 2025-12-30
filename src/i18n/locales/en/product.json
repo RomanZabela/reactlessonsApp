@@ -1,0 +1,22 @@
+{
+    "product":{
+        "title": "Product List"
+    },
+    "details": {
+        "price": "Price",
+        "rating": "Rating",
+        "errorInvalidId": "Invalid Product ID",
+        "errorLoading": "Failed to load product details."
+    },
+    "table": {
+        "image": "Image",
+        "title": "Title",
+        "category": "Category",
+        "price": "Price",
+        "actions": "Actions",
+        "description": "Description"
+    },
+    "button": {
+        "viewDetails": "View Details"
+    }
+}

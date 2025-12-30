@@ -1,0 +1,25 @@
+.container {
+    padding: 1rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.dataTable {
+    cursor: pointer;
+}
+
+.dataTable .p-button-text {
+    color: var(--text-color);
+    background-color: transparent;
+}
+
+.productImage {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 0.25rem;
+}

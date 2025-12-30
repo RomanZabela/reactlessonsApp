@@ -1,0 +1,31 @@
+{
+    "header": {
+        "menu": "תפריט",
+        "home": "בית",
+        "about": "אודות",
+        "products": "מוצרים"
+    },
+    "sidebar": {
+        "menu": "תפריט",
+        "home": "בית",
+        "about": "אודות",
+        "products": "מוצרים"
+    },
+    "buttons": {
+        "increment": "הוסף",
+        "update": "עדכן כותרת",
+        "back": "חזור לרשימה",
+        "changeLanguage": "שנה שפה"
+    },
+    "titles": {
+        "homePageTitle": "דף הבית"
+    },
+    "messages": {
+        "error": "נכשל בטעינת {{name}}.",
+        "success": "הספירה עלתה ל-{{count}}."
+    },
+    "themeSwitch": {
+        "toLight": "החלף לנושא בהיר",
+        "toDark": "החלף לנושא כהה"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "header": {
+        "menu": "Menu",
+        "home": "Home",
+        "about": "About",
+        "products": "Products"
+    },
+    "sidebar": {
+        "menu": "Menu",
+        "home": "Home",
+        "about": "About",
+        "products": "Products"
+    },
+    "buttons": {
+        "increment": "Increment",
+        "update": "Update Title",
+        "back": "Back to List",
+        "changeLanguage": "Change Language"
+    },
+    "messages": {
+        "error": "Failed to load {{name}}.",
+        "success": "Count incremented to {{count}}."
+    },
+    "themeSwitch": {
+        "toLight": "Switch to Light Theme",
+        "toDark": "Switch to Dark Theme"
+    }
+}

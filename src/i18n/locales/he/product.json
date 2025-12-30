@@ -1,0 +1,21 @@
+{
+    "product":{
+        "title": "רשימת מוצרים"
+    },
+    "details": {
+        "price": "מחיר",
+        "rating": "דירוג",
+        "errorInvalidId": "מזהה מוצר לא חוקי",
+        "errorLoading": "טעינת פרטי המוצר נכשלה."
+    },
+    "table": {
+        "image": "תמונה",
+        "title": "כותרת",
+        "category": "קטגוריה",
+        "actions": "פעולות",
+        "description": "תיאור"
+    },
+    "button": {
+        "viewDetails": "הצג פרטים"
+    }
+}

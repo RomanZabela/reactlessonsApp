@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const About = () => {
-    const [title, setTitle] = useState('About Page');
+    const {t, i18n} = useTranslation(['about', 'common']);
+    const [title, setTitle] = useState(t('about:title'));
+
+    useEffect(() => {
+        setTitle(t('about:title'));
+    }, [i18n.language, t]);
+    
     return (
         <div>
             <h1>{title}</h1>
-            <p>This is the about page of our application.</p>
+            <p>{t('about:description')}</p>
             <input 
                 type="text" 
                 value={title} 
                 onChange={(e) => setTitle(e.target.value)} 
             />
-            <button onClick={() => setTitle('About Page Updated')}>Update Title</button>
+            <button onClick={() => setTitle(t('about:newTitle'))}>{t('common:buttons.update')}</button>
         </div>
     )
 }

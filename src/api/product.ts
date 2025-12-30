@@ -1,6 +1,7 @@
+
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-export const fetchProducts = async (page: number, pageSize: number) => {
+export const fetchProducts = async (page: number, pageSize: number, sortField: string, sortOrder: string) => {
     await delay(1000);
 
     if (Math.random() < 0.5) {
@@ -9,7 +10,7 @@ export const fetchProducts = async (page: number, pageSize: number) => {
 
     const skip = (page - 1) * pageSize;
 
-    const response = await fetch(`https://dummyjson.com/products?limit=${pageSize}&skip=${skip}`);
+    const response = await fetch(`https://dummyjson.com/products?limit=${pageSize}&skip=${skip}&sortBy=${sortField}&order=${sortOrder}`);
 
     if (!response.ok) {
         throw new Error('Failed to fetch products');
