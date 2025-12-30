@@ -14,18 +14,18 @@
     "buttons": {
         "increment": "הוסף",
         "update": "עדכן כותרת",
-        "back": "חזור לרשימה"
+        "back": "חזור לרשימה",
+        "changeLanguage": "שנה שפה"
     },
     "titles": {
         "homePageTitle": "דף הבית"
     },
-    "pagination": {
-        "previous": "הקודם",
-        "next": "הבא",
-        "page": "עמוד {{page}} מתוך {{totalPages}}"
-    },
     "messages": {
         "error": "נכשל בטעינת {{name}}.",
         "success": "הספירה עלתה ל-{{count}}."
+    },
+    "themeSwitch": {
+        "toLight": "החלף לנושא בהיר",
+        "toDark": "החלף לנושא כהה"
     }
 }

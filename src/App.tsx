@@ -63,6 +63,7 @@ function App() {
               value={i18n.language}
               onChange={changeLanguage}
               className='language-select'
+              aria-label='language switch'
             >
               <option value="en">English</option>
               <option value="he">עברית</option>

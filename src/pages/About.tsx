@@ -8,6 +8,7 @@ export const About = () => {
     useEffect(() => {
         setTitle(t('about:title'));
     }, [i18n.language, t]);
+    
     return (
         <div>
             <h1>{title}</h1>

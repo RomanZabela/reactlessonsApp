@@ -112,7 +112,7 @@ export const ProductList = () => {
                 onRowClick={(e) => navigate(`/products/${e.data.id}`)}
                 className="dataTable"
                 loading={isLoading}
-                expandedRows={expandedRows!}
+                expandedRows={expandedRows || {}}
                 onRowToggle={(e) => setExpandedRows(e.data)}
                 rowExpansionTemplate={rowExpansionTemplate}
                 dataKey="id"

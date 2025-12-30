@@ -13,7 +13,6 @@
         "title": "Title",
         "category": "Category",
         "price": "Price",
-        "rating": "Rating",
         "actions": "Actions",
         "description": "Description"
     },

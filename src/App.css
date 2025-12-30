@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .app-container {
@@ -8,12 +10,28 @@
   overflow-x: hidden;
 }
 
-html[dir="rtl"] .app-container .top-nav .nav-button .p-button-icon {
-  margin-left: 0.5rem;
+html[dir="ltr"] {
+  --icon-left-margin-right: 0.5rem;
+  --icon-left-margin-left: 0;
+  --icon-right-margin-left: 0.5rem;
+  --icon-right-margin-right: 0;
 }
 
-html[dir="ltr"] .app-container .top-nav .nav-button .p-button-icon {
-  margin-left: inherit;
+html[dir="rtl"] {
+  --icon-left-margin-right: 0;
+  --icon-left-margin-left: 0.5rem;
+  --icon-right-margin-left: 0;
+  --icon-right-margin-right: 0.5rem;
+}
+
+.app-container .top-nav .p-button .p-button-icon-left {
+  margin-right: var(--icon-left-margin-right);
+  margin-left: var(--icon-left-margin-left);
+}
+
+.app-container .top-nav .p-button .p-button-icon-right {
+  margin-left: var(--icon-right-margin-left);
+  margin-right: var(--icon-right-margin-right);
 }
 
 .app-container.light-theme {

@@ -17,11 +17,6 @@
         "back": "Back to List",
         "changeLanguage": "Change Language"
     },
-    "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "page": "Page {{page}} of {{totalPages}}"
-    },
     "messages": {
         "error": "Failed to load {{name}}.",
         "success": "Count incremented to {{count}}."

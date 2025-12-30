@@ -12,8 +12,6 @@
         "image": "תמונה",
         "title": "כותרת",
         "category": "קטגוריה",
-        "price": "מחיר",
-        "rating": "דירוג",
         "actions": "פעולות",
         "description": "תיאור"
     },
