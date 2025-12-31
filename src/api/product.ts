@@ -1,12 +1,5 @@
 
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 export const fetchProducts = async (page: number, pageSize: number, sortField: string, sortOrder: string) => {
-    await delay(1000);
-
-    if (Math.random() < 0.5) {
-        throw new Error("Simulated error after loading!");
-    }
 
     const skip = (page - 1) * pageSize;
 
@@ -20,8 +13,6 @@ export const fetchProducts = async (page: number, pageSize: number, sortField: s
 };
 
 export const fetchProductById = async (id: number) => {
-    
-    await delay(1000);
 
     const response = await fetch(`https://dummyjson.com/products/${id}`);
 

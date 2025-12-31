@@ -21,7 +21,9 @@ interface ToastProps {
 
 const Toast = ({toast, onClose}: ToastProps) => {
     return (
-        <div className={`toast toast-${toast.type}`}>
+        <div 
+        data-testid="toast"
+        className={`toast toast-${toast.type}`}>
             <div className="toast-message">{toast.message}</div>
             <button className="toast-close" onClick={onClose}>×</button>
         </div>
