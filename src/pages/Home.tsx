@@ -20,10 +20,13 @@ export const Home = () => {
     return (
         <div className="home-container">
             <Card title={t('home:title')}>
-            <p className="count-info">
+            <p 
+            data-testid="count-info"
+            className="count-info">
                 {t('home:count', { count })}
             </p>
             <Button 
+                data-testid="increment-button"
                 label={t('home:button')} 
                 icon="pi pi-plus" 
                 onClick={handleIncrement}
