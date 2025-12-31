@@ -5,7 +5,7 @@ test.describe('Home Page', () => {
         await page.goto('http://localhost:5173/');
     });
 
-    test('should discplay the home page correctly', async ({ page }) => {
+    test('should display the home page correctly', async ({ page }) => {
         const card = page.locator('.p-card');
         await expect(card).toBeVisible();
 
@@ -47,7 +47,7 @@ test.describe('Home Page', () => {
         await expect(toast).toBeVisible({ timeout: 2000 });
     });
 
-    test('should icrement count multiple times and show correct toast message', async ({ page }) => {
+    test('should increment count multiple times and show correct toast message', async ({ page }) => {
         const button = page.getByTestId('increment-button');
         const countInfo = page.getByTestId('count-info');
 

@@ -24,6 +24,9 @@ const mockProducts = {
     limit: 10
 };
 
+const BASE_URL = 'http://localhost:5173/products';
+const BASE_DUMMYJSON_URL = 'https://dummyjson.com/products';
+
 test.describe('Product List Page', () => {
     test.beforeEach( async ({ page }) => {
         await page.route('**/products?**', async (route) => {
@@ -36,7 +39,7 @@ test.describe('Product List Page', () => {
     });
 
     test('should display product list correctly', async ({ page }) => {
-        await page.goto('http://localhost:5173/products');
+        await page.goto(BASE_URL);
 
         await expect(page.locator('h1')).toBeVisible();
         await expect(page.locator('.dataTable')).toBeVisible();
@@ -54,7 +57,7 @@ test.describe('Product List Page', () => {
     });
 
     test('should expand row to show description', async ({ page }) => {
-        await page.goto('http://localhost:5173/products');
+        await page.goto(BASE_URL);
 
         const viewButton = page.locator('button[aria-label="View Details"]').first();
         await viewButton.click();
@@ -64,7 +67,7 @@ test.describe('Product List Page', () => {
     });
 
     test('should collapse row when view button is clicked again', async ({ page }) => {
-        await page.goto('http://localhost:5173/products');
+        await page.goto(BASE_URL);
 
         const viewButton = page.locator('button[aria-label="View Details"]').first();
         await viewButton.click();
@@ -75,8 +78,8 @@ test.describe('Product List Page', () => {
         await expect(viewButton.locator('.pi-eye')).toBeVisible();
     });
 
-    test('should paginate to detailed page when row is clicked', async ({ page }) => {
-        await page.goto('http://localhost:5173/products');
+    test('should navigate to detailed page when row is clicked', async ({ page }) => {
+        await page.goto(BASE_URL);
 
         const firstRow = page.locator('.p-datatable-tbody > tr').first();
         await firstRow.click();
@@ -87,13 +90,12 @@ test.describe('Product List Page', () => {
     test('should handle pagination', async ({ page }) => {
         let requestCount = 0;
         
-        await page.route('https://dummyjson.com/products*', async (route) => {
+        await page.route(`${BASE_DUMMYJSON_URL}*`, async (route) => {
             const url = new URL(route.request().url());
             const skip = url.searchParams.get('skip') || '0';
             const limit = url.searchParams.get('limit') || '10';
             
             requestCount++;
-            console.log(`Request ${requestCount}: skip=${skip}, limit=${limit}`);
             
             await route.fulfill({
                 status: 200,
@@ -116,24 +118,21 @@ test.describe('Product List Page', () => {
             });
         });
 
-        await page.goto('http://localhost:5173/products');
+        await page.goto(BASE_URL);
         
-        // Wait for initial load
         await expect(page.getByText('Product 1')).toBeVisible();
         
-        // Click next page button
         const nextButton = page.locator('.p-paginator-next').first();
         await nextButton.click();
         
-        // Wait for new data to load
-        await page.waitForTimeout(500);
+        await page.waitForLoadState();
         await expect(page.getByText('Product 3')).toBeVisible();
     });
 
     test('should change rows per page', async ({ page }) => {
         let lastLimit = '10';
         
-        await page.route('https://dummyjson.com/products*', async (route) => {
+        await page.route(`${BASE_DUMMYJSON_URL}*`, async (route) => {
             const url = new URL(route.request().url());
             lastLimit = url.searchParams.get('limit') || '10';
             
@@ -147,27 +146,22 @@ test.describe('Product List Page', () => {
             });
         });
 
-        await page.goto('http://localhost:5173/products');
+        await page.goto(BASE_URL);
         
-        // Wait for initial load
         await expect(page.getByText('Product 1')).toBeVisible();
         
-        // Open dropdown
         const rowsDropdown = page.locator('.p-dropdown').first();
         await rowsDropdown.click();
         
-        // Select 25 rows option
         await page.locator('.p-dropdown-item').filter({ hasText: '25' }).click();
         
-        // Wait a bit for the request
-        await page.waitForTimeout(500);
+        await page.waitForLoadState();
         
-        // Verify the request was made with correct limit
         expect(lastLimit).toBe('25');
     });
 
     test('should disable next button on last page', async ({ page }) => {
-        await page.route('https://dummyjson.com/products*', async (route) => {
+        await page.route(`${BASE_DUMMYJSON_URL}*`, async (route) => {
             const url = new URL(route.request().url());
             const skip = Number(url.searchParams.get('skip')) || 0;
             
@@ -176,27 +170,25 @@ test.describe('Product List Page', () => {
                 contentType: 'application/json',
                 body: JSON.stringify({
                     products: mockProducts.products,
-                    total: 12, // Only 2 pages with limit 10
+                    total: 12,
                     skip: skip,
                     limit: 10
                 })
             });
         });
 
-        await page.goto('http://localhost:5173/products');
+        await page.goto(BASE_URL);
         await expect(page.getByText('Product 1')).toBeVisible();
         
-        // Go to last page
         const nextButton = page.locator('.p-paginator-next').first();
         await nextButton.click();
-        await page.waitForTimeout(500);
+        await page.waitForLoadState();
         
-        // Next button should be disabled
         await expect(nextButton).toBeDisabled();
     });
 
     test('should disable previous button on first page', async ({ page }) => {
-        await page.goto('http://localhost:5173/products');
+        await page.goto(BASE_URL);
         await expect(page.getByText('Product 1')).toBeVisible();
         
         const prevButton = page.locator('.p-paginator-prev').first();
