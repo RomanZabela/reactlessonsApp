@@ -1,0 +1,125 @@
+.form {
+  max-width: 480px;
+  margin: 2rem auto;
+  font-family: system-ui, sans-serif;
+}
+
+.form .field {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form .field span {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.form input,
+.form select,
+.form textarea,
+.form button {
+  width: 100%;
+  padding: 6px 8px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Focus styles (no layout shift) */
+.form input:focus-visible,
+.form select:focus-visible,
+.form textarea:focus-visible,
+.form button:focus-visible {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.4);
+}
+
+.form .fieldset {
+  border: 2px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form .fieldset legend {
+  padding: 0 0.5rem;
+  font-weight: 500;
+}
+
+.form .checkbox,
+.form .range {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form .checkbox input,
+.form .range input {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.form .error {
+  color: #b91c1c;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.form .submit {
+  margin-top: 1rem;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form .submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.radioCard {
+  position: relative;
+  cursor: pointer;
+}
+
+.radioCard input {
+  position: absolute;
+  opacity: 0;
+}
+
+.cardContent {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem;
+  border: 2px solid #cbd5f5;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.check {
+  opacity: 0;
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.radioCard input:checked + .cardContent {
+  border-color: #2563eb;
+  background-color: #eef2ff;
+  font-weight: 600;
+}
+
+.radioCard input:checked + .cardContent .check {
+  opacity: 1;
+}
+
+.radioCard input:focus-visible + .cardContent {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+}
+
+.radioCard:hover .cardContent {
+  border-color: #94a3b8;
+}
