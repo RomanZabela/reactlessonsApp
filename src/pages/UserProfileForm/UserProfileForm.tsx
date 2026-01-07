@@ -13,12 +13,12 @@ const formSchema = z
         password: z.string().min(8, 'Password must be at least 8 characters long'),
         confirmPassword: z.string().min(8, 'Please confirm your password'),
         age: z.number().min(18, 'You must be at least 18 years old'),
-        gender: z.enum(['male', 'female', 'other'], 'Please select'),
+        gender: z.enum(['male', 'female', 'other'], {message: 'Please select'}),
         country: z.string().min(1, 'Select a country'),
         bio: z.string().max(300).optional(),
         newsletter: z.boolean(),
         experience: z.number(),
-        terms: z.literal(true).refine((val) => val === true, {
+        terms: z.boolean().refine((val) => val === true, {
             message: 'You must accept the terms and conditions',
         }),
     })
@@ -82,8 +82,8 @@ export const UserProfileForm = () => {
     const onSubmit = async (data: FormData) => {
         await new Promise((resolve) => setTimeout(resolve, 1500));
         localStorage.removeItem(STORAGE_KEY);
-        reset();
         console.log('Form submitted:', data);
+        reset();
     };
 
     return (
@@ -123,7 +123,7 @@ export const UserProfileForm = () => {
                         <span className='cardContent'>
                             <span className='icon'>👨</span>
                             <span className='text'>Male</span>
-                            <span className='check' aria-hidden="true"> ✓</span>
+                            <span className='check' aria-hidden="true">✓</span>
                         </span>
                     </label>
                     <label className='radioCard'>
@@ -131,7 +131,7 @@ export const UserProfileForm = () => {
                         <span className='cardContent'>
                             <span className='icon'>👩</span>
                             <span className='text'>Female</span>
-                            <span className='check' aria-hidden="true"> ✓</span>
+                            <span className='check' aria-hidden="true">✓</span>
                         </span>
                     </label>
                     <label className='radioCard'>
@@ -139,7 +139,7 @@ export const UserProfileForm = () => {
                         <span className='cardContent'>
                             <span className='icon'>🧑</span>
                             <span className='text'>Other</span>
-                            <span className='check' aria-hidden="true"> ✓</span>
+                            <span className='check' aria-hidden="true">✓</span>
                         </span>
                     </label>
                     {errors.gender && (
@@ -188,8 +188,7 @@ export const UserProfileForm = () => {
                 {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
         </form>
-    )
-
+    );
 }
 
 function FormField({
