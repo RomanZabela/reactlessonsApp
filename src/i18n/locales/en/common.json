@@ -61,7 +61,7 @@
             "lastNameRequired": "Last name is required",
             "invalidEmail": "Invalid email address",
             "passwordMinLength": "Password must be at least 8 characters long",
-            "confirmPasswordRequired": "Please confirm your password",
+            "passwordRequired": "Please confirm your password",
             "passwordsMismatch": "Passwords do not match",
             "ageMinimum": "You must be at least 18 years old",
             "genderRequired": "Please select",

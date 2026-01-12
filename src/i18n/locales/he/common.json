@@ -64,7 +64,7 @@
             "lastNameRequired": "שם משפחה נדרש",
             "invalidEmail": "כתובת אימייל לא תקינה",
             "passwordMinLength": "הסיסמה חייבת להכיל לפחות 8 תווים",
-            "confirmPasswordRequired": "אנא אמת את הסיסמה",
+            "passwordRequired": "אנא אמת את הסיסמה",
             "passwordsMismatch": "הסיסמאות אינן תואמות",
             "ageMinimum": "עליך להיות לפחות בן 18",
             "genderRequired": "אנא בחר",

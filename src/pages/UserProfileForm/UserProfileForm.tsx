@@ -104,7 +104,7 @@ export const UserProfileForm = () => {
                 <input {...register('lastName')} />
             </FormField>
 
-            <FormField label={t('common:userProfile.fields.email')} error={errors.email ? t('common:userProfile.errors.emailRequired') : undefined} required>
+            <FormField label={t('common:userProfile.fields.email')} error={errors.email ? t('common:userProfile.errors.invalidEmail') : undefined} required>
                 <input type='email' {...register('email')} />
             </FormField>
 
@@ -112,11 +112,11 @@ export const UserProfileForm = () => {
                 <input type='password' {...register('password')} />
             </FormField>
 
-            <FormField label={t('common:userProfile.fields.confirmPassword')} error={errors.confirmPassword ? t('common:userProfile.errors.confirmPasswordRequired') : undefined} required>
+            <FormField label={t('common:userProfile.fields.confirmPassword')} error={errors.confirmPassword ? t('common:userProfile.errors.passwordsMismatch') : undefined} required>
                 <input type='password' {...register('confirmPassword')} />
             </FormField>
 
-            <FormField label={t('common:userProfile.fields.age')} error={errors.age ? t('common:userProfile.errors.ageRequired') : undefined}>
+            <FormField label={t('common:userProfile.fields.age')} error={errors.age ? t('common:userProfile.errors.ageMinimum') : undefined}>
                 <input type='number' {...register('age', { valueAsNumber: true })} />
             </FormField>
 
@@ -190,7 +190,7 @@ export const UserProfileForm = () => {
                 <p className='error' role='alert'>{t('common:userProfile.errors.termsRequired')}</p>
             )}
 
-            <button type='submit' disabled={!isValid || isSubmitting}>
+            <button type='submit' className='submit' disabled={!isValid || isSubmitting}>
                 {isSubmitting ? t('common:userProfile.button.submitting') : t('common:userProfile.button.submit')}
             </button>
         </form>
