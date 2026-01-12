@@ -1,7 +1,15 @@
+.required {
+  color: #b91c1c;
+}
+
 .form {
   max-width: 480px;
   margin: 2rem auto;
   font-family: system-ui, sans-serif;
+}
+
+.form.dark {
+  color: #f9fafb;
 }
 
 .form .field {
@@ -9,8 +17,8 @@
   margin-bottom: 1rem;
 }
 
-.form .field span {
-  display: block;
+.form .field > span {
+  display: inline-block;
   margin-bottom: 4px;
   font-weight: 500;
 }
@@ -24,6 +32,14 @@
   border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
+}
+
+.form.dark input,
+.form.dark select,
+.form.dark textarea {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
 }
 
 /* Focus styles (no layout shift) */
@@ -40,6 +56,10 @@
   border: 2px solid #ccc;
   padding: 1rem;
   margin-bottom: 1rem;
+}
+
+.form.dark .fieldset {
+  border-color: #4b5563;
 }
 
 .form .fieldset legend {
@@ -63,6 +83,10 @@
   color: #b91c1c;
   font-size: 0.875rem;
   margin-top: 4px;
+}
+
+.form.dark .error {
+  color: #fca5a5;
 }
 
 .form .submit {
@@ -99,6 +123,11 @@
   transition: all 0.2s ease;
 }
 
+.form.dark .cardContent {
+  background-color: #374151;
+  border-color: #4b5563;
+}
+
 .check {
   opacity: 0;
   color: #2563eb;
@@ -112,6 +141,11 @@
   font-weight: 600;
 }
 
+.form.dark .radioCard input:checked + .cardContent {
+  background-color: #1e3a8a;
+  border-color: #3b82f6;
+}
+
 .radioCard input:checked + .cardContent .check {
   opacity: 1;
 }
@@ -122,4 +156,8 @@
 
 .radioCard:hover .cardContent {
   border-color: #94a3b8;
+}
+
+.form.dark .radioCard:hover .cardContent {
+  border-color: #6b7280;
 }
