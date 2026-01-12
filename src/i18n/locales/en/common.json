@@ -24,5 +24,49 @@
     "themeSwitch": {
         "toLight": "Switch to Light Theme",
         "toDark": "Switch to Dark Theme"
+    },
+    "userProfile": {
+        "title": "User Profile",
+        "fields": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email",
+            "password": "Password",
+            "confirmPassword": "Confirm Password",
+            "age": "Age",
+            "gender": "Gender",
+            "country": "Country",
+            "bio": "Bio",
+            "experienceLevel": "Experience Level",
+            "newsletter": "Subscribe to newsletter",
+            "terms": "I accept the terms and conditions"
+        },
+        "genderOptions": {
+            "male": "Male",
+            "female": "Female",
+            "other": "Other"
+        },
+        "countryOptions": {
+            "placeholder": "Select country",
+            "us": "United States",
+            "il": "Israel",
+            "uk": "United Kingdom"
+        },
+        "button": {
+            "submit": "Submit",
+            "submitting": "Submitting..."
+        },
+        "errors": {
+            "firstNameRequired": "First name is required",
+            "lastNameRequired": "Last name is required",
+            "invalidEmail": "Invalid email address",
+            "passwordMinLength": "Password must be at least 8 characters long",
+            "confirmPasswordRequired": "Please confirm your password",
+            "passwordsMismatch": "Passwords do not match",
+            "ageMinimum": "You must be at least 18 years old",
+            "genderRequired": "Please select",
+            "countryRequired": "Select a country",
+            "termsRequired": "You must accept the terms and conditions"
+        }
     }
 }

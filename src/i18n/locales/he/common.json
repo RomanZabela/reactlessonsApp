@@ -27,5 +27,49 @@
     "themeSwitch": {
         "toLight": "החלף לנושא בהיר",
         "toDark": "החלף לנושא כהה"
+    },
+    "userProfile": {
+        "title": "פרופיל משתמש",
+        "fields": {
+            "firstName": "שם פרטי",
+            "lastName": "שם משפחה",
+            "email": "אימייל",
+            "password": "סיסמה",
+            "confirmPassword": "אימות סיסמה",
+            "age": "גיל",
+            "gender": "מגדר",
+            "country": "מדינה",
+            "bio": "אודות",
+            "experienceLevel": "רמת ניסיון",
+            "newsletter": "הרשמה לניוזלטר",
+            "terms": "אני מאשר/ת את התנאים וההגבלות"
+        },
+        "genderOptions": {
+            "male": "זכר",
+            "female": "נקבה",
+            "other": "אחר"
+        },
+        "countryOptions": {
+            "placeholder": "בחר מדינה",
+            "us": "ארצות הברית",
+            "il": "ישראל",
+            "uk": "בריטניה"
+        },
+        "button": {
+            "submit": "שלח",
+            "submitting": "שולח..."
+        },
+        "errors": {
+            "firstNameRequired": "שם פרטי נדרש",
+            "lastNameRequired": "שם משפחה נדרש",
+            "invalidEmail": "כתובת אימייל לא תקינה",
+            "passwordMinLength": "הסיסמה חייבת להכיל לפחות 8 תווים",
+            "confirmPasswordRequired": "אנא אמת את הסיסמה",
+            "passwordsMismatch": "הסיסמאות אינן תואמות",
+            "ageMinimum": "עליך להיות לפחות בן 18",
+            "genderRequired": "אנא בחר",
+            "countryRequired": "בחר מדינה",
+            "termsRequired": "עליך לאשר את התנאים וההגבלות"
+        }
     }
 }
